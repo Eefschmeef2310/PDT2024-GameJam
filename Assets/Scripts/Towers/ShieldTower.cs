@@ -62,6 +62,6 @@ public class ShieldTower : BaseTower, ITower
     // Set shield break radius to ascendedShieldBreakRadius value
     public void Ascended()
     {
-        playerScript.SetShieldBreakSize(ascendedShieldBreakRadius);
+        playerScript.ShieldBreakEffectSize = ascendedShieldBreakRadius;
     }
 }
