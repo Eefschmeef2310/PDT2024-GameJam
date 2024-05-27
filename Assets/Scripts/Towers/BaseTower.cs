@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TowerStage
+{
+    V1,
+    V2,
+    V3,
+    ASCENDED,
+}
+
 public class BaseTower : MonoBehaviour
 {
     [SerializeField] private TowerStats TowerStats;
@@ -78,12 +86,4 @@ public class BaseTower : MonoBehaviour
         }
         towerStageNumber++;
     }
-}
-
-public enum TowerStage
-{
-    V1,
-    V2,
-    V3,
-    ASCENDED,
 }

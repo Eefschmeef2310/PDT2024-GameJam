@@ -8,7 +8,9 @@ public class GenericTower : BaseTower, ITower
     [SerializeField] GameObject bulletGameObject;
     [SerializeField] float bulletSpeed;
 
+    [Tooltip ("Amount of enemies the bullet can hit before disappearing")]
     private int multiHit = 2;
+    [Tooltip("Bullet inital position")]
     private float posOffset = 0.1f;
 
     protected override void Start()
@@ -78,7 +80,6 @@ public class GenericTower : BaseTower, ITower
     }
 
     // Projectiles can hit two extra enemies
-    // Penatration bullet is created in Create Bullet
     public void Ascended() { }
 
     private void CreateBullet(Vector3 position, Quaternion rotataion)
