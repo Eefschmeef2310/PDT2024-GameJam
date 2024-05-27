@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Team Blue - PDT 2024 Game Jam.sln"
+    "dotnet.defaultSolution": "PDT2024-GameJam.sln"
 }
