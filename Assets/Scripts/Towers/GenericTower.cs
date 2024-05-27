@@ -50,12 +50,14 @@ public class GenericTower : BaseTower, ITower
         }
     }
 
+    // Fire 1 projectile infront
     public void V1()
     {
         Vector2 posForward = transform.position + transform.up * posOffset;
         CreateBullet(posForward, Quaternion.identity);
     }
 
+    // Fire 1 projectile left + right
     public void V2()
     {
         Vector2 posLeft = transform.position + -transform.right * posOffset;
@@ -67,6 +69,7 @@ public class GenericTower : BaseTower, ITower
         CreateBullet(posRight, rotRight);
     }
 
+    // Fire 1 projectile behind
     public void V3()
     {
         Vector2 posBehind = transform.position + -transform.up * posOffset;
@@ -74,10 +77,9 @@ public class GenericTower : BaseTower, ITower
         CreateBullet(posBehind, behindRotation);
     }
 
-    public void Ascended() 
-    { 
-        // Penatration bullet is created in Create Bullet
-    }
+    // Projectiles can hit two extra enemies
+    // Penatration bullet is created in Create Bullet
+    public void Ascended() { }
 
     private void CreateBullet(Vector3 position, Quaternion rotataion)
     {

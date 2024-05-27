@@ -6,8 +6,8 @@ public class BaseTower : MonoBehaviour
 {
     [SerializeField] private TowerStats TowerStats;
 
-
     protected bool canFire = true;
+    [Tooltip ("Firing every X seconds")]
     protected float fireRate;
     protected float power;
     protected float range;
@@ -24,7 +24,7 @@ public class BaseTower : MonoBehaviour
             case 3:
                 return TowerStage.V3;
             case 4:
-                return TowerStage.Ascended;
+                return TowerStage.ASCENDED;
             default:
                 Debug.Log($"Invalid Level: {towerStageNumber}");
                 return TowerStage.V1;
@@ -45,13 +45,13 @@ public class BaseTower : MonoBehaviour
     }
 
     protected virtual void Fire() {
-        StartCoroutine(FireRateHandler()); 
+        StartCoroutine(HandleFireRate()); 
     }
 
-    private IEnumerator FireRateHandler()
+    private IEnumerator HandleFireRate()
     {
         canFire = false;
-        float nextToFire = 1 / fireRate;
+        float nextToFire = fireRate;
         yield return new WaitForSeconds(nextToFire);
         canFire = true;
     }
@@ -71,8 +71,11 @@ public class BaseTower : MonoBehaviour
 
     public void LevelTower()
     {
-        if (towerStageNumber == 4)
+        if (towerStageNumber >= 4)
+        {
+            towerStageNumber = 4;
             return;
+        }
         towerStageNumber++;
     }
 }
@@ -82,5 +85,5 @@ public enum TowerStage
     V1,
     V2,
     V3,
-    Ascended,
+    ASCENDED,
 }
