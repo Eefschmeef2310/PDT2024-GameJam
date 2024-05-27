@@ -30,7 +30,7 @@ public class TowerBullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            
+            other.GetComponent<BaseCharacterScript>().TakeDamage(damage);
         }
     }
     void OnBecameInvisible()
