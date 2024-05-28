@@ -13,6 +13,7 @@ public enum TowerStage
 public class BaseTower : MonoBehaviour
 {
     [SerializeField] private TowerStats TowerStats;
+    [SerializeField] private float towerSizeRadius = 0.08f;
 
     protected bool canFire = true;
     [Tooltip ("Firing every X seconds")]
@@ -21,21 +22,35 @@ public class BaseTower : MonoBehaviour
     protected float range;
     protected int towerStageNumber = 1;
 
-    public TowerStage GetTowerStage()
+    void OnDrawGizmosSelected()
     {
-        switch (towerStageNumber)
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, towerSizeRadius);
+    }
+
+    public float TowerSizeRadius
+    {
+        get { return towerSizeRadius; }
+    }
+
+    public TowerStage TowerStage
+    {
+        get
         {
-            case 1:
-                return TowerStage.V1;
-            case 2:
-                return TowerStage.V2;
-            case 3:
-                return TowerStage.V3;
-            case 4:
-                return TowerStage.ASCENDED;
-            default:
-                Debug.Log($"Invalid Level: {towerStageNumber}");
-                return TowerStage.V1;
+            switch (towerStageNumber)
+            {
+                case 1:
+                    return TowerStage.V1;
+                case 2:
+                    return TowerStage.V2;
+                case 3:
+                    return TowerStage.V3;
+                case 4:
+                    return TowerStage.ASCENDED;
+                default:
+                    Debug.Log($"Invalid Level: {towerStageNumber}");
+                    return TowerStage.V1;
+            }
         }
     }
 

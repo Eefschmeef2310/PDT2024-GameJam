@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &746145997989564692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8348270793023797495}
+  m_Layer: 0
+  m_Name: ---Tower List---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8348270793023797495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746145997989564692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3561009567191403011}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1229386471237159649
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +136,7 @@ GameObject:
   - component: {fileID: 4250663495495647395}
   - component: {fileID: 3581109183773952394}
   - component: {fileID: 4979486576817994385}
+  - component: {fileID: 190393031033804916}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -120,12 +152,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9028005969368876725}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.009569675, y: -0.0045649484, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4714017062630550580}
+  - {fileID: 8348270793023797495}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2598900751740993391
@@ -232,3 +265,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc1aaf8132235b459fd359fde236338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &190393031033804916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9028005969368876725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbf942a8ea09614e9539fe4dddc3d26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOuterRadius: 2.8
+  playerInnerRadius: 0.8
+  playerTowersParent: {fileID: 746145997989564692}
+  towers:
+  - {fileID: 7181731314585263223, guid: 12b6ce8f582ae4647b507bcb2cf5e3b4, type: 3}
+  - {fileID: 4208447964494488129, guid: 47fe61fc1fb00734e913973ee6a06696, type: 3}
