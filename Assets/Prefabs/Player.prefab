@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 3561009567191403011}
   - component: {fileID: 2598900751740993391}
   - component: {fileID: 4250663495495647395}
-  - component: {fileID: 3581109183773952394}
   - component: {fileID: 4979486576817994385}
+  - component: {fileID: 3581109183773952394}
   - component: {fileID: 190393031033804916}
   m_Layer: 0
   m_Name: Player
@@ -240,6 +240,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4979486576817994385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9028005969368876725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc1aaf8132235b459fd359fde236338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3581109183773952394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,18 +265,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
---- !u!114 &4979486576817994385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9028005969368876725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bc1aaf8132235b459fd359fde236338, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &190393031033804916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerOuterRadius: 2.8
-  playerInnerRadius: 0.8
+  playerInnerRadius: 0.5
+  towerRotationSpeed: 60
   playerTowersParent: {fileID: 746145997989564692}
   towers:
   - {fileID: 7181731314585263223, guid: 12b6ce8f582ae4647b507bcb2cf5e3b4, type: 3}

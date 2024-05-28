@@ -5,14 +5,14 @@ using UnityEngine.UIElements;
 
 public class TowerManager : MonoBehaviour
 {
-    [SerializeField] private float playerOuterRadius = 2f;
-    [SerializeField] private float playerInnerRadius = .03f;
+    [SerializeField] private float playerOuterRadius = 2.8f;
+    [SerializeField] private float playerInnerRadius = .5f;
+    [SerializeField] private float towerRotationSpeed = 60f;
     [SerializeField] private GameObject playerTowersParent;
 
     private Vector3 mousePosition;
-
-    private bool isPlacingTower = false;
     private GameObject placingTower;
+    private bool isPlacingTower = false;
 
     void OnDrawGizmosSelected()
     {
@@ -40,6 +40,11 @@ public class TowerManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha2) && !isPlacingTower)
         {
             SetPlacingTower(Instantiate(towers[1], mousePosition, Quaternion.identity));
+        }
+
+        if (Input.GetKey(KeyCode.Space) && !isPlacingTower)
+        {
+            RotatePlayerTowersClockwise();
         }
 
         if (isPlacingTower)
@@ -96,6 +101,12 @@ public class TowerManager : MonoBehaviour
         placingTower.GetComponent<BaseTower>().enabled = true;
         placingTower.transform.SetParent(playerTowersParent.transform);
         SetPlacingTower();
+    }
+
+    private void RotatePlayerTowersClockwise()
+    {
+        float rotationAmount = towerRotationSpeed * Time.deltaTime;
+        playerTowersParent.transform.Rotate(0f, 0f, rotationAmount);
     }
 
     private bool IsTowerPositionValid()

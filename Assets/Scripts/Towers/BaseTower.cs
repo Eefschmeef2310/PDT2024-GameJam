@@ -61,22 +61,11 @@ public class BaseTower : MonoBehaviour
 
     protected virtual void Update()
     {
+        transform.rotation = Quaternion.identity;
         if (canFire)
         {
             Fire();
         }
-    }
-
-    protected virtual void Fire() {
-        StartCoroutine(HandleFireRate()); 
-    }
-
-    private IEnumerator HandleFireRate()
-    {
-        canFire = false;
-        float nextToFire = fireRate;
-        yield return new WaitForSeconds(nextToFire);
-        canFire = true;
     }
 
     private void InitaliseTowerStats()
@@ -100,5 +89,17 @@ public class BaseTower : MonoBehaviour
             return;
         }
         towerStageNumber++;
+    }
+
+    protected virtual void Fire() {
+        StartCoroutine(HandleFireRate()); 
+    }
+
+    private IEnumerator HandleFireRate()
+    {
+        canFire = false;
+        float nextToFire = fireRate;
+        yield return new WaitForSeconds(nextToFire);
+        canFire = true;
     }
 }
