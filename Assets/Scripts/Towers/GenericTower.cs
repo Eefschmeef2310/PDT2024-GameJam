@@ -79,7 +79,7 @@ public class GenericTower : BaseTower, ITower
         CreateBullet(posBehind, behindRotation);
     }
 
-    // Projectiles can hit two extra enemies
+    // Projectiles can hit two extra enemies (implemented inside CreateBullet())
     public void Ascended() { }
 
     private void CreateBullet(Vector3 position, Quaternion rotataion)
