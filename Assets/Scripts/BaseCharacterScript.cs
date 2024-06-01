@@ -33,7 +33,8 @@ public class BaseCharacterScript : MonoBehaviour
             shieldBreakStatusEffect = value;
         }
     }
-
+    public float Health { get { return health; } }
+    public float Shield { get { return shieldHealth; } }
     void Start()
     {
         
