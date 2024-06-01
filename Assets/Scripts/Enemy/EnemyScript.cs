@@ -18,4 +18,12 @@ public class EnemyScript : BaseCharacterScript
             Destroy(gameObject);
         }
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<BaseCharacterScript>().TakeDamage(10);
+        }
+    }
 }
