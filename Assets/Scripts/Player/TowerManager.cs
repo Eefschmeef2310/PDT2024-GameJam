@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,6 +14,10 @@ public class TowerManager : MonoBehaviour
     private Vector3 mousePosition;
     private GameObject placingTower;
     private bool isPlacingTower = false;
+    public Collider2D[] colliders;
+
+    public float detectionRadius = 0.5f;
+    public LayerMask towerLayerMask;
 
     void OnDrawGizmosSelected()
     {
@@ -21,6 +26,13 @@ public class TowerManager : MonoBehaviour
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, playerInnerRadius);
+
+        if (colliders != null)
+        {
+            Vector2 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(cursorPosition, detectionRadius);
+        }
     }
 
     void Start()
@@ -89,7 +101,6 @@ public class TowerManager : MonoBehaviour
     public void MoveSelectedTower()
     {
         Vector3 mousePosition = Input.mousePosition;
-
         mousePosition.z = Camera.main.nearClipPlane;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 targetPosition = new Vector2(worldPosition.x, worldPosition.y);
@@ -100,6 +111,7 @@ public class TowerManager : MonoBehaviour
     {
         placingTower.GetComponent<SpriteRenderer>().color = Color.white;
         placingTower.GetComponent<BaseTower>().enabled = true;
+        placingTower.layer = 6;
         placingTower.transform.SetParent(playerTowersParent.transform);
         SetPlacingTower();
         Time.timeScale = 1;
@@ -115,8 +127,24 @@ public class TowerManager : MonoBehaviour
     {
         float towerRadius = placingTower.GetComponent<BaseTower>().TowerSizeRadius;
         float towerDistanceToCentre = CalculateDistanceToTower(placingTower.transform.position);
+        
 
         return (towerDistanceToCentre - towerRadius > playerInnerRadius) &&
-       (towerDistanceToCentre + towerRadius < playerOuterRadius);
+       (towerDistanceToCentre + towerRadius < playerOuterRadius) && !CheckForTowers();
+    }
+
+    private bool CheckForTowers()
+    {
+        detectionRadius = placingTower.GetComponent<BaseTower>().TowerSizeRadius;
+        Vector2 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        colliders = Physics2D.OverlapCircleAll(cursorPosition, detectionRadius, towerLayerMask);
+        foreach (var collider in colliders)
+        {
+            if (collider.CompareTag("Tower"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

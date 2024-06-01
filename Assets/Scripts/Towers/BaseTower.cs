@@ -32,7 +32,6 @@ public class BaseTower : MonoBehaviour
     {
         get { return towerSizeRadius; }
     }
-
     public TowerStage TowerStage
     {
         get

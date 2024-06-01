@@ -3553,6 +3553,10 @@ MonoBehaviour:
   playerInnerRadius: 0.5
   towerRotationSpeed: 60
   playerTowersParent: {fileID: 746145997989564692}
+  detectionRadius: 0.5
+  towerLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   towers:
   - {fileID: 7181731314585263223, guid: 12b6ce8f582ae4647b507bcb2cf5e3b4, type: 3}
   - {fileID: 4208447964494488129, guid: 47fe61fc1fb00734e913973ee6a06696, type: 3}
