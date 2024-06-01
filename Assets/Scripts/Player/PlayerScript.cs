@@ -7,7 +7,7 @@ public class PlayerScript : BaseCharacterScript
     private int playerLevel = 1;
 
     [SerializeField] private int experience = 0;
-    [SerializeField] private int maxExperience = 10;
+    [SerializeField] private int maxExperience = 5;
     [SerializeField] private UIPlayer playerUI;
 
     public int Level { get { return playerLevel; } }

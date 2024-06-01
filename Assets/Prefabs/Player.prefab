@@ -3399,7 +3399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   experience: 0
-  maxExperience: 10
+  maxExperience: 5
   playerUI: {fileID: 7325407218541311400}
 --- !u!114 &190393031033804916
 MonoBehaviour:
