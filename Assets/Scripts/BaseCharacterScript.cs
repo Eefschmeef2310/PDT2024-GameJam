@@ -10,7 +10,7 @@ public enum StatusEffects
 
 public class BaseCharacterScript : MonoBehaviour
 {
-    protected float health;
+    [SerializeField] protected float health;
     protected StatusEffects currentStatEffect;
 
     protected float shieldHealth = 0;
@@ -33,7 +33,8 @@ public class BaseCharacterScript : MonoBehaviour
             shieldBreakStatusEffect = value;
         }
     }
-
+    public float Health { get { return health; } }
+    public float Shield { get { return shieldHealth; } }
     void Start()
     {
         

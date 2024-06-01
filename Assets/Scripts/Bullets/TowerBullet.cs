@@ -5,7 +5,7 @@ using UnityEngine;
 public class TowerBullet : MonoBehaviour
 {
     private float damage;
-    private float speed = 1;
+    [SerializeField] private float speed = 1;
     private int maxHit;
     private Rigidbody2D rb;
 
@@ -25,12 +25,21 @@ public class TowerBullet : MonoBehaviour
     {
         rb.velocity = transform.up * speed;
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy"))
         {
-            other.GetComponent<BaseCharacterScript>().TakeDamage(damage);
+            collision.GetComponent<BaseCharacterScript>().TakeDamage(damage);
+            RemoveOneMultiHit();
+        }
+    }
+
+    private void RemoveOneMultiHit()
+    {
+        maxHit--;
+        if (maxHit <= 0)
+        {
+            OnBecameInvisible();
         }
     }
     void OnBecameInvisible()

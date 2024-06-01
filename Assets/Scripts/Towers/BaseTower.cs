@@ -32,7 +32,6 @@ public class BaseTower : MonoBehaviour
     {
         get { return towerSizeRadius; }
     }
-
     public TowerStage TowerStage
     {
         get
@@ -83,12 +82,34 @@ public class BaseTower : MonoBehaviour
 
     public void LevelTower()
     {
+        towerStageNumber++;
         if (towerStageNumber >= 4)
         {
             towerStageNumber = 4;
-            return;
         }
-        towerStageNumber++;
+        UpdateTowerLevelColour();
+    }
+
+    private void UpdateTowerLevelColour()
+    {
+        switch (towerStageNumber)
+        {
+            case 4:
+                GetComponent<SpriteRenderer>().color = Color.yellow;
+                break;
+            case 3:
+                GetComponent<SpriteRenderer>().color = Color.blue;
+                break;
+            case 2:
+                GetComponent<SpriteRenderer>().color = Color.cyan;
+                break;
+            case 1:
+                GetComponent<SpriteRenderer>().color = Color.white;
+                break;
+            default:
+                Debug.Log("Invalid tower level.");
+                break;
+        }
     }
 
     protected virtual void Fire() {
