@@ -15,6 +15,7 @@ public class EnemyScript : BaseCharacterScript
     {
         if (health <= 0)
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().AddExperience();
             Destroy(gameObject);
         }
     }

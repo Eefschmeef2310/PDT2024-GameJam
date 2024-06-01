@@ -8,7 +8,7 @@ public class TowerManager : MonoBehaviour
     [SerializeField] private float playerOuterRadius = 2.8f;
     [SerializeField] private float playerInnerRadius = .5f;
     [SerializeField] private float towerRotationSpeed = 60f;
-    [SerializeField] private GameObject playerTowersParent;
+    [SerializeField] public GameObject playerTowersParent;
 
     private Vector3 mousePosition;
     private GameObject placingTower;
@@ -25,23 +25,13 @@ public class TowerManager : MonoBehaviour
 
     void Start()
     {
-        SetPlacingTower(Instantiate(towers[0], mousePosition, Quaternion.identity));
+        CreateGenericTower();
     }
 
     // Used for testing
     [SerializeField] private List<GameObject> towers;
     void Update()
     {
-        // Testing key binds
-        if (Input.GetKeyDown(KeyCode.Alpha1) && !isPlacingTower)
-        {
-            SetPlacingTower(Instantiate(towers[0], mousePosition, Quaternion.identity));
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && !isPlacingTower)
-        {
-            SetPlacingTower(Instantiate(towers[1], mousePosition, Quaternion.identity));
-        }
-
         if (Input.GetKey(KeyCode.Space) && !isPlacingTower)
         {
             RotatePlayerTowersClockwise();
@@ -63,6 +53,16 @@ public class TowerManager : MonoBehaviour
                 placingTower.GetComponent<SpriteRenderer>().color = Color.red;
             }
         }
+    }
+
+    public void CreateGenericTower()
+    {
+        SetPlacingTower(Instantiate(towers[0], mousePosition, Quaternion.identity));
+    }
+
+    public void CreateShieldTower()
+    {
+        SetPlacingTower(Instantiate(towers[1], mousePosition, Quaternion.identity));
     }
 
     private void SetPlacingTower(GameObject tower = null)
