@@ -25,7 +25,7 @@ public class TowerManager : MonoBehaviour
 
     void Start()
     {
-        
+        SetPlacingTower(Instantiate(towers[0], mousePosition, Quaternion.identity));
     }
 
     // Used for testing
@@ -67,6 +67,7 @@ public class TowerManager : MonoBehaviour
 
     private void SetPlacingTower(GameObject tower = null)
     {
+        Time.timeScale = 0;
         if (tower == null)
         {
             isPlacingTower = false;
@@ -101,6 +102,7 @@ public class TowerManager : MonoBehaviour
         placingTower.GetComponent<BaseTower>().enabled = true;
         placingTower.transform.SetParent(playerTowersParent.transform);
         SetPlacingTower();
+        Time.timeScale = 1;
     }
 
     private void RotatePlayerTowersClockwise()
